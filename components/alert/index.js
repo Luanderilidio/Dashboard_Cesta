@@ -6,12 +6,8 @@ import MuiAlert from '@mui/material/Alert';
 
 export default function Alert() {
   return (
-    <>
-    <Snackbar>
+    <Snackbar autoHideDuration={6000}>
      Luaner Ilidio
     </Snackbar>
-    asd
-    </>
-    
   );
 }

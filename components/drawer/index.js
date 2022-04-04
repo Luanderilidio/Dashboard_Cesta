@@ -17,7 +17,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import { MdPersonAddAlt1 } from "react-icons/md";
 import { FaSearchDollar } from "react-icons/fa";
 import { BsCartCheckFill } from "react-icons/bs";
-
+import { useRouter } from "next/router";
 
 const drawerWidth = 240;
 
@@ -87,6 +87,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Menu(props) {
+  const roteamento = useRouter();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -131,32 +132,50 @@ export default function Menu(props) {
           </IconButton>
         </DrawerHeader>
         <Divider />
-          <List>
-            <ListItem button key={"Lista Geral"}>
-              <ListItemIcon>
-                <MdPersonAddAlt1 color={"#E80303"} size={25} />
-              </ListItemIcon>
-              <Typography color="black" variant="h6" noWrap component="div">
-                Cadastrar
-              </Typography>
-            </ListItem>
-            <ListItem button key={"Lista Geral"}>
-              <ListItemIcon>
-                <FaSearchDollar color={"#E80303"} size={25} />
-              </ListItemIcon>
-              <Typography color="black" variant="h6" noWrap component="div">
-                Consultar
-              </Typography>
-            </ListItem>
-            <ListItem button key={"Lista Geral"}>
-              <ListItemIcon>
-                <BsCartCheckFill color={"#E80303"} size={25} />
-              </ListItemIcon>
-              <Typography color="black" variant="h6" noWrap component="div">
-                Pagamentos
-              </Typography>
-            </ListItem>
-          </List>
+        <List>
+          <ListItem
+            onClick={() => {
+              roteamento.push("/cadastro");
+            }}
+            button
+            key={"Lista Geral"}
+          >
+            <ListItemIcon>
+              <MdPersonAddAlt1 color={"#E80303"} size={25} />
+            </ListItemIcon>
+            <Typography color="black" variant="h6" noWrap component="div">
+              Cadastrar
+            </Typography>
+          </ListItem>
+          <ListItem
+            onClick={() => {
+              roteamento.push("/consultar");
+            }}
+            button
+            key={"Lista Geral"}
+          >
+            <ListItemIcon>
+              <FaSearchDollar color={"#E80303"} size={25} />
+            </ListItemIcon>
+            <Typography color="black" variant="h6" noWrap component="div">
+              Consultar
+            </Typography>
+          </ListItem>
+          <ListItem
+            onClick={() => {
+              roteamento.push("/pagamentos");
+            }}
+            button
+            key={"Lista Geral"}
+          >
+            <ListItemIcon>
+              <BsCartCheckFill color={"#E80303"} size={25} />
+            </ListItemIcon>
+            <Typography color="black" variant="h6" noWrap component="div">
+              Pagamentos
+            </Typography>
+          </ListItem>
+        </List>
         <Divider />
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

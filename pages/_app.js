@@ -1,5 +1,6 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import '@fontsource/roboto/500.css';
+import { PayProvider } from "../provider/pagamento";
+import "@fontsource/roboto/500.css";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -19,9 +20,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <PayProvider>
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </PayProvider>
     </>
   );
 }
